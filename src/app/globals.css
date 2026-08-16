@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+:root {
+  --bg: #fdfdfb;
+  --surface: #ffffff;
+  --surface-alt: #f5f5f1;
+  --border: #e4e3dc;
+  --ink: #14140f;
+  --ink-muted: #5b5b54;
+  --accent: #1f7a4d;
+  --accent-soft: #e7f3ec;
+  --warn: #b45309;
+  --danger: #b42318;
+  --success: #1f7a4d;
+  --locked: #a6a69c;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-locked: var(--locked);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.katex {
+  font-size: 1.05em;
+}
