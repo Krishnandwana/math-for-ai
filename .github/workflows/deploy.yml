@@ -1,21 +1,12 @@
-name: Deploy to GitHub Pages
+name: Deploy to Krishnandwana.github.io
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,21 +27,13 @@ jobs:
       - name: Add .nojekyll
         run: touch ./out/.nojekyll
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to Krishnandwana.github.io
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./out
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: Krishnandwana/Krishnandwana.github.io
+          publish_branch: main
+          publish_dir: ./out
+          user_name: Krish Nandwana
+          user_email: krishnandwana@gmail.com
+          commit_message: "Deploy math-for-ai build"

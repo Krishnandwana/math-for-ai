@@ -4,7 +4,7 @@ A free, self-paced curriculum that teaches the math behind AI/ML — theory, for
 derivations, a worked example in both algebra and Python, then an answer-only assessment
 you solve by hand and in code before a module unlocks the next one.
 
-**Live:** [krishnandwana.github.io/math-for-ai](https://krishnandwana.github.io/math-for-ai/)
+**Live:** [krishnandwana.github.io](https://krishnandwana.github.io/)
 
 > **This project is for personal learning purposes only.** It was built as a self-study
 > exercise to explore the math behind AI/ML and to practice building with Next.js. It is
@@ -43,13 +43,20 @@ Then open [http://localhost:3000](http://localhost:3000).
 
 ## Deployment
 
-Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds a static export
-(`output: 'export'` in `next.config.ts`) and publishes it to GitHub Pages at
-`krishnandwana.github.io/math-for-ai`. The base path is only applied in CI
-(`GITHUB_ACTIONS=true`), so `npm run dev` and a plain local `npm run build` are unaffected.
+Source code lives here, in `math-for-ai`. Pushes to `main` trigger
+`.github/workflows/deploy.yml`, which builds a static export (`output: 'export'` in
+`next.config.ts`) and pushes the result to the `main` branch of the separate
+[`Krishnandwana.github.io`](https://github.com/Krishnandwana/Krishnandwana.github.io)
+repo, which GitHub serves at the bare domain `krishnandwana.github.io`.
 
-One-time setup required in the repo: **Settings → Pages → Build and deployment → Source:
-GitHub Actions**.
+One-time setup required:
+
+- A **classic personal access token** with `repo` scope (or a fine-grained token scoped to
+  `Krishnandwana.github.io` with Contents: Read and write), added as a repository secret
+  named `PAGES_DEPLOY_TOKEN` on **this** repo (Settings → Secrets and variables → Actions).
+- Pages on the `Krishnandwana.github.io` repo needs no manual configuration — GitHub
+  auto-serves `<username>.github.io` repos from the `main` branch root once anything is
+  pushed there.
 
 ## Status
 
