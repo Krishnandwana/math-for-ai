@@ -4,6 +4,8 @@ A free, self-paced curriculum that teaches the math behind AI/ML — theory, for
 derivations, a worked example in both algebra and Python, then an answer-only assessment
 you solve by hand and in code before a module unlocks the next one.
 
+**Live:** [krishnandwana.github.io/math-for-ai](https://krishnandwana.github.io/math-for-ai/)
+
 > **This project is for personal learning purposes only.** It was built as a self-study
 > exercise to explore the math behind AI/ML and to practice building with Next.js. It is
 > not an official product, is not actively maintained as a service, and comes with no
@@ -38,6 +40,16 @@ npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000).
+
+## Deployment
+
+Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds a static export
+(`output: 'export'` in `next.config.ts`) and publishes it to GitHub Pages at
+`krishnandwana.github.io/math-for-ai`. The base path is only applied in CI
+(`GITHUB_ACTIONS=true`), so `npm run dev` and a plain local `npm run build` are unaffected.
+
+One-time setup required in the repo: **Settings → Pages → Build and deployment → Source:
+GitHub Actions**.
 
 ## Status
 
